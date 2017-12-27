@@ -1,0 +1,92 @@
+a.hover:hover {
+    font-weight: bold;
+}
+li.hover:hover {
+    background-color: #66bb6a;
+}
+li.hover:active {
+    background-color: green;
+}
+div.main-index {
+    box-shadow: 5px 5px 5px #bdbdbd;
+}
+body {
+    background-color: #e0e0e0;
+}
+div.body {
+    background-color: white;
+}
+div.title {
+    height: 60px;
+}
+p.title {
+    font-weight: bold;
+    text-align: center;
+}
+div.size {
+    height: 425px;
+}
+div.sizemodal {
+    height: 400px;
+}
+div.sizemodal2 {
+    height: 600px;
+}
+div.signInModal {
+    width: 400px;
+    height: 1000px;
+}
+p.meanTitle {
+    font-weight: bold;
+    font-size: 200%;
+}
+p.meanContent {
+    font-size: 150%;
+}
+div.image_size {
+    height: 100%;
+}
+p.testTitle {
+    font-weight: bold;
+    font-size: 150%;
+}
+a.title {
+    text-align: center;
+}
+a.facebook {
+    background-color: #3B5998;
+}
+a.facebook:hover {
+    background-color: #2d4373;
+}
+a.google {
+    background-color: #DD4B39;
+}
+a.google:hover {
+    background-color: #c23321;
+}
+a.signin {
+    background-color: forestgreen;
+}
+a.signin:hover {
+    background-color: darkgreen;
+}
+a.forget {
+    font-size: 75%;
+}
+
+div.log {
+    height:300px;
+    box-shadow: 15px 10px 5px #bdbdbd;
+}
+h1.title_name {
+    color: white;
+    font-family: "Great Vibes", cursive;
+    font-size: 45px;
+    line-height: 50px;
+    font-weight: normal;
+    margin-bottom: 0;
+    margin-top: 4px;
+    text-align: center;
+    text-shadow: 0 1px 1px #fff;
+}

@@ -1,0 +1,286 @@
+<title>{{ title }}</title>
+<main>
+    <div class="header">
+        <nav class="green">
+            <div class="nav-wrapper row">
+                <div class="col s2">
+                    <a href="#" class="brand-logo">Just Japan</a></div>
+                <div class="input-field col s8">
+                    <i class="material-icons prefix white-text">search</i>
+                    <input type="text" class="validate green lighten-1" placeholder="Tìm kiếm">
+                </div>
+                <div class="col s2 right-align">
+                    <a class="waves-effect waves-teal btn-flat white-text green darken-1 modal-trigger" ng-click="signIn()">Sign in</a>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <div class="main-index">
+        <div class="subheader content green row">
+            <div class="col s3">
+                <label>
+                    <select class="browser-default btn-flat white-text">
+                        <optgroup class="black-text" label="Tên giáo trình">
+                            <option value="1" class="black-text">Mina no Nihongo</option>
+                            <option value="2" class="black-text">Mimi kara oboeru</option>
+                        </optgroup>
+                    </select>
+                </label>
+            </div>
+            <div class="col s9 green">
+                <ul class="tabs green hide-on-med-and-down">
+                    <li class="tab col s3 white-text hover" ><a href="#" class="hover white-text" ng-click="change('Từ vựng')">Từ vựng</a></li>
+                    <li class="tab col s3 white-text hover" ><a href="#" class="hover white-text"  ng-click="change('Ngữ pháp')">Ngữ pháp</a></li>
+                    <li class="tab col s3 white-text hover"><a href="#" class="hover white-text modal-trigger" ng-click="minitest()">Mini test</a></li>
+                    <li class="tab col s3 white-text hover"><a href="#" class="hover white-text" ng-click="buybook()">Thêm giáo trình</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s2">
+            <div class="card blue-grey white">
+                <div class="card-content title">
+                    <p class="title">{{ lessonTitle }}</p>
+                </div>
+            </div>
+            <div class="card blue-grey white">
+                <div class="card-content size" style="overflow: auto">
+                    <table class="borderless highlight white">
+                        <tbody>
+                            <tr ng-repeat="numberLesson in numberLessons">
+                                <td ng-click="selectLesson(numberLesson.Bai); changeLessonTitle(numberLesson.Bai)">Bài {{ numberLesson.Bai }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col s3">
+            <div class="card blue-grey white">
+                <div class="card-content title">
+                    <p class="title">{{ title2 }}</p>
+                </div>
+            </div>
+            <div class="card blue-grey white">
+                <div class="card-content size" style="overflow: auto">
+                    <table class="bordered highlight">
+                        <tbody>
+                        <tr ng-repeat="listVocalb in listVocalbs">
+                            <td ng-click="selectVocalb(listVocalb.STT)">{{ listVocalb.Nhat }}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col s7">
+            <div class="card large blue-grey white">
+                <div class="card-content" style="overflow: auto" ng-repeat="vocalb in vocalbs">
+                    <a ng-click="favorite()" ng-hide="love()" href="#" class="secondary-content"><i class="material-icons red-text">favorite</i></a>
+                    <a ng-click="favorite()" ng-show="love()" href="#" class="secondary-content"><i class="material-icons red-text">favorite_border</i></a>
+                    <p class="light-blue-text meanTitle">{{ vocalb.Nhat }}</p>
+                    <p class="grey-text meanContent">{{ vocalb.Kanji }}</p>
+                    <p class="light-blue-text meanContent">{{ vocalb.Nghia }}</p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--mini test-->
+    <div class="modal sizemodal" id="minitest">
+        <div class="modal-content">
+            <p class="meanTitle center-align green-text">MINITEST</p>
+            <p>Chọn số lượng câu hỏi:</p>
+            <div class="row">
+                <form action="#">
+                    <p class="col s3">
+                        <input class="with-gap" name="question" type="radio" id="10" checked="checked" ng-click="number_test(10)"/>
+                        <label for="10">10 câu</label>
+                    </p>
+                    <p class="col s3">
+                        <input class="with-gap" name="question" type="radio" id="20" ng-click="number_test(20)"/>
+                        <label for="20">20 câu</label>
+                    </p>
+                    <p class="col s3">
+                        <input class="with-gap" name="question" type="radio" id="30" ng-click="number_test(30)"/>
+                        <label for="30">30 câu</label>
+                    </p>
+                </form>
+            </div>
+            <p>Kiểm tra phần: </p>
+            <div class="row">
+                <form action="#">
+                    <p class="col s3">
+                        <input class="with-gap" name="question" type="radio" id="vocalb" checked="checked" ng-click="type(1)"/>
+                        <label for="vocalb">Từ vựng</label>
+                    </p>
+                    <p class="col s3">
+                        <input class="with-gap" name="question" type="radio" id="grammar" ng-click="type(2)"/>
+                        <label for="grammar">Ngữ pháp</label>
+                    </p>
+                    <p class="col s3">
+                        <input class="with-gap" name="question" type="radio" id="all" ng-click="type(3)"/>
+                        <label for="all">Cả 2 phần</label>
+                    </p>
+                </form>
+            </div>
+            <p>Giới hạn thời gian: </p>
+            <div class="switch">
+                <label>
+                    Không
+                    <input type="checkbox" ng-click="time()">
+                    <span class="lever"></span>
+                    Có
+                </label>
+            </div>
+        </div>
+
+        <div class="modal-footer row">
+            <p class="modal-action modal-close btn-flat">Đóng</p>
+            <button class="btn waves-effect waves-light modal-trigger" name="action" ng-click="goToMinitest(); test()">
+                Bắt đầu làm bài
+                <i class="material-icons right">send</i>
+            </button>
+        </div>
+    </div>
+
+    <!--test-->
+    <div class="modal sizemodal2" id="test">
+        <div class="modal-content">
+            <p class="meanTitle center-align green-text">MINITEST</p>
+            <table>
+                <tbody>
+                    <tr ng-init="listVocalbs; randomNumbers" ng-repeat="listVocalbTest in listVocalbTests track by $index">
+                        <td>
+                            <div class="card">
+                                <div class="row">
+                                    <div class="col s2"></div>
+                                    <form class="col s10">
+                                        <p class="testTitle blue-text">{{$index +1}}.{{ listVocalbTest[randomNumbers[$index]].Nhat }}</p>
+                                        <p ng-repeat="list in listVocalbTest">
+                                            <input class="with-gap" name="{{ listVocalbTest }}" type="radio" id="{{ list.Nghia }}" ng-click="check(listVocalbTest[randomNumbers[$index]].STT, list.STT)"/>
+                                            <label for="{{ list.Nghia }}" class="black-text">{{ list.Nghia }}</label>
+                                        </p>
+                                        <p class="red-text" ng-show="answer()">Đáp án: {{ listVocalbTest[randomNumbers[$index]].Nghia }}</p>
+                                    </form>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="modal-footer row">
+            <button class="modal-close btn-danger btn red" ng-hide="answer()">
+                <i class="material-icons right">cancel</i>
+                Hủy
+            </button>
+            <button class="btn waves-effect waves-light" name="action" ng-click="done()" ng-hide="answer()">
+                Nộp bài
+                <i class="material-icons right">send</i>
+            </button>
+            <p class="blue-text" ng-show="answer()">
+                Điểm: {{ score }}/{{ number }}
+            </p>
+            <button class="modal-close btn-danger btn red" ng-show="answer()">
+                <i class="material-icons right">cancel</i>
+                Thoát
+            </button>
+        </div>
+    </div>
+
+    <!--buybook-->
+    <div class="modal modal-fixed-footer" id="buybook">
+        <div class="modal-content">
+            <p class="meanTitle center-align green-text">BOOKSTORE</p>
+            <table class="bordered">
+                <tbody>
+                <tr ng-repeat="listbook in listbooks">
+                    <td>
+                    <div class="card">
+                        <div class="card-content row">
+                            <div class="card-image waves-effect waves-block waves-light image_size col s4">
+                                <img class="activator" src={{listbook.AnhMinhHoa}}>
+                            </div>
+                            <div class="col s1"></div>
+                            <div class="col s7">
+                                <span class="card-title activator grey-text text-darken-4">{{ listbook.Ten }}<i class="material-icons right">more_vert</i></span>
+                                <p>Trình độ: {{ listbook.TrinhDo }}</p>
+                                <p><a>Giá: {{ listbook.Gia }} VND</a></p>
+                                <button class="btn blue white-text waves-effect waves-light"><i class="material-icons left">add</i>Thêm</button>
+                            </div>
+                        </div>
+                        <div class="card-reveal image_size">
+                            <span class="card-title grey-text text-darken-4">{{ listbook.Ten }}<i class="material-icons right">close</i></span>
+                            <p>{{ listbook.Mota }}</p>
+                        </div>
+                    </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="modal-footer">
+            <p class="modal-action modal-close btn-flat">Đóng</p>
+            <button class="btn blue waves-effect waves-light" name="action">
+                Đặt hàng
+                <i class="material-icons right">add_shopping_cart</i>
+            </button>
+        </div>
+    </div>
+
+    <!--signIn-->
+    <div class="modal signInModal" id="signIn">
+
+        <div class="modal-content">
+            <h5 class="center-align grey-text">Đăng nhập</h5>
+            <div class="row">
+                <a class="col s12 btn btn-block btn-social btn-facebook facebook">
+                    <span class="fa fa-facebook"></span> Đăng nhập bằng Facebook
+                </a>
+            </div>
+            <div class="row">
+                <a class="col s12 btn btn-block btn-social btn-google google">
+                    <span class="fa fa-google"></span> Đăng nhập bằng Google
+                </a>
+            </div>
+            <div class="row">
+                <hr class="col s5"><a class="grey-text col s2 center-align">hoặc</a><hr class="col s5">
+                <form>
+                    <div class="col s1"> </div>
+                    <div class="input-field col s10">
+                        <i class="material-icons prefix">person</i>
+                        <input id="username" type="text" class="validate">
+                        <label for="username">Tên người dùng</label>
+                    </div>
+                    <div class="col s1"></div>
+                </form>
+                <form>
+                    <div class="col s1"> </div>
+                    <div class="input-field col s10">
+                        <i class="material-icons prefix">lock</i>
+                        <input id="password" type="password" class="validate">
+                        <label for="password">Mật khẩu</label>
+                        <a class="forget col s12 left-align blue-text" href="#">Quên mật khẩu?</a>
+                    </div>
+                    <div class="col s1"></div>
+                </form>
+            </div>
+            <div class="row">
+                <div class="col s2"></div>
+                <div class="col s8">
+                    <a class="btn btn-block btn-social btn-facebook signin" ng-click="signIn()">Đăng nhập</a>
+                </div>
+                <div class="col s2"></div>
+                <a class="forget col s8 right-align black-text">Bạn chưa có tài khoản Japy?<a class="forget col s4 left-align blue-text" href="#">Đăng ký</a></a>
+            </div>
+        </div>
+    </div>
+</main>
+
+
+

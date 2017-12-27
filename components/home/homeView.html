@@ -1,0 +1,50 @@
+<title>{{ title }}</title>
+<main class="blue lighten-4">
+    <div class="header">
+        <nav class="green lighten-1">
+            <div class="row">
+                <div class="col s3"></div>
+                <h1 class="col s6 center-align title_name">Just Japan</h1>
+                <div class="col s3"></div>
+            </div>
+        </nav>
+    </div>
+    <div class="main-index log white">
+        <div class="row">
+            <div class="col s3"></div>
+            <div class="col s6">
+                <form>
+                    <div class="center-align input-field col s12">
+                        <i class="material-icons prefix">person</i>
+                        <input id="username" type="text" class="validate" ng-model="user.username" value="username">
+                        <label for="username">Tên người dùng</label>
+                    </div>
+                </form>
+                <form>
+                    <div class="center-align input-field col s12">
+                        <i class="material-icons prefix">lock</i>
+                        <input id="password" type="password" class="validate" ng-model="user.password" value="password">
+                        <label for="password">Mật khẩu</label>
+                    </div>
+                </form>
+                <a class="forget col s12 left-align blue-text" href="#">Quên mật khẩu?</a>
+                <div class="col s4"></div>
+                <div class="col s4 ">
+                    <a class="center-align btn btn-block btn-social btn-facebook signin" ng-click="signIn()">Đăng nhập</a>
+                </div>
+                <div class="col s4"></div>
+                <a class="forget col s7 right-align black-text">Bạn chưa có tài khoản Japy?<a class="forget col s5 left-align blue-text" href="#">Đăng ký</a></a>
+            </div>
+        </div>
+    </div>
+    <div class="subheader">
+        <div class="carousel">
+            <a class="carousel-item" href="#"><img src="https://images-na.ssl-images-amazon.com/images/I/91L3rUBEBqL.jpg"></a>
+            <a class="carousel-item" href="#"><img src="http://i42.tinypic.com/27y7ba.jpg"></a>
+            <a class="carousel-item" href="#"><img src="https://japancentre-images.freetls.fastly.net/images/pics/5364/large/original.jpg?1469559053"></a>
+            <a class="carousel-item" href="#"><img src="http://giaotrinhtiengnhat.com/wp-content/uploads/2017/09/sach-luyen-thi-n3-tanki-master.jpg"></a>
+            <a class="carousel-item" href="#"><img src="https://cdn.shopify.com/s/files/1/0414/0681/products/fast-track-jlpt-n2-practice-exercises-tanki-master-second-ed_9399_1400x.jpeg?v=1457002686"></a>
+        </div>
+    </div>
+
+</main>

@@ -2,8 +2,9 @@
  * Created by NEVHAV on 12/11/17.
  */
 angular.module('JPweb-fe')
-    .controller('mainController', function ($scope, $http, API_URL, API_URL_VOCALB, API_URL_GRAMMAR, $state) {
+    .controller('mainController', function ($scope, $http, API_URL, API_URL_VOCALB, API_URL_GRAMMAR, Cache, $state) {
 
+        console.log('iden', Cache.get('iden'));
         API_URL = API_URL_VOCALB;
         $scope.title = 'JPweb';
         $scope.title2 = 'Từ vựng';
@@ -72,8 +73,9 @@ angular.module('JPweb-fe')
         };
         $scope.time_default = false;
         $scope.time = function () {
-            if ($scope.time_default === false)
+            if ($scope.time_default === false) {
                 $scope.time_default = true;
+            }
             else
                 $scope.time_default = false;
         };

@@ -2,7 +2,7 @@
  * Created by NEVHAV on 26/12/17.
  */
 angular.module('JPweb-fe')
-    .controller('homeController', function ($scope, $http, $state){
+    .controller('homeController', function ($scope, $http, $state, Cache){
         $scope.title = 'JPweb - Home';
         $(document).ready(function(){
             $('.carousel').carousel();
@@ -23,6 +23,9 @@ angular.module('JPweb-fe')
             }).then(function (response) {
                 console.log(response);
                 console.log('success');
+                $scope.iden = 1;
+                var iden = 'iden';
+                Cache.put(iden, $scope.iden);
                 goMain();
             }, function (error) {
                 console.log(error);

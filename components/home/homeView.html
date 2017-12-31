@@ -11,29 +11,49 @@
     </div>
     <div class="main-index log white">
         <div class="row">
-            <div class="col s3"></div>
             <div class="col s6">
-                <form>
-                    <div class="center-align input-field col s12">
+                <div class="right_center_div">
+                    <div class="row">
+                        <div class="col s6"></div>
+                        <div class="col s6" >
+                            <a class="btn btn-block btn-social btn-facebook facebook">
+                                <span class="fa fa-facebook"></span> Đăng nhập bằng Facebook
+                            </a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s6"></div>
+                        <div class="col s6">
+                            <a class="btn btn-block btn-social btn-google google">
+                                <span class="fa fa-google"></span> Đăng nhập bằng Google
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col s6">
+                <form class="row">
+                    <div class="center-align input-field col s6">
                         <i class="material-icons prefix">person</i>
                         <input id="username" type="text" class="validate" ng-model="user.username" value="username">
                         <label for="username">Tên người dùng</label>
                     </div>
                 </form>
-                <form>
-                    <div class="center-align input-field col s12">
+                <form class="row">
+                    <div class="center-align input-field col s6">
                         <i class="material-icons prefix">lock</i>
                         <input id="password" type="password" class="validate" ng-model="user.password" value="password">
                         <label for="password">Mật khẩu</label>
                     </div>
                 </form>
                 <a class="forget col s12 left-align blue-text" href="#">Quên mật khẩu?</a>
-                <div class="col s4"></div>
-                <div class="col s4 ">
-                    <a class="center-align btn btn-block btn-social btn-facebook signin" ng-click="signIn()">Đăng nhập</a>
+                <div class="row">
+                    <div class="col s6">
+                        <a class="center-align btn btn-block btn-social btn-facebook signin" ng-click="signIn()">Đăng nhập</a>
+                    </div>
+                    <div class="col s6"></div>
                 </div>
-                <div class="col s4"></div>
-                <a class="forget col s7 right-align black-text">Bạn chưa có tài khoản Japy?<a class="forget col s5 left-align blue-text" href="#">Đăng ký</a></a>
+                <a class="forget col s4 right-align black-text">Bạn chưa có tài khoản Japy?<a class="forget col s8 left-align blue-text" href="#">Đăng ký</a></a>
             </div>
         </div>
     </div>

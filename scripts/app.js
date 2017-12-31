@@ -9,7 +9,11 @@ angular.module('JPweb-fe', [
     .constant('API_URL_GRAMMAR', 'http://localhost:8080/JPweb-be/')
     .constant('API_URL', '')
     // .constant('API_URL', 'http://localhost:8080/contacts/public/contacts/')
-
+    .factory('Cache', function ($cacheFactory) {
+        return $cacheFactory('Cache', {
+            capacity: 1
+        });
+    })
     .config(['$urlRouterProvider', '$stateProvider', function ($urlRouterProvider, $stateProvider) {
         $urlRouterProvider.otherwise('/home');
         $stateProvider

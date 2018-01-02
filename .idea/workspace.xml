@@ -2,17 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ddec6aa0-9c5d-4504-8cf2-22cf0831e8f4" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/components/home.rar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/components/main/google-plus.png" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/myself/css/myself.css" afterPath="$PROJECT_DIR$/bower_components/myself/css/myself.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/home/homeController.js" afterPath="$PROJECT_DIR$/components/home/homeController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/home/homeView.html" afterPath="$PROJECT_DIR$/components/home/homeView.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/main/mainController.js" afterPath="$PROJECT_DIR$/components/main/mainController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/main/mainView.html" afterPath="$PROJECT_DIR$/components/main/mainView.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/app.js" afterPath="$PROJECT_DIR$/scripts/app.js" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -320,7 +310,7 @@
       <workItem from="1514865740038" duration="5362000" />
       <workItem from="1514880091447" duration="3057000" />
       <workItem from="1514883497478" duration="1120000" />
-      <workItem from="1514905294168" duration="2180000" />
+      <workItem from="1514905294168" duration="2258000" />
     </task>
     <task id="LOCAL-00001" summary="Nam ngulol">
       <created>1514696256475</created>
@@ -329,11 +319,18 @@
       <option name="project" value="LOCAL" />
       <updated>1514696256475</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Nam ngulol">
+      <created>1514907507246</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1514907507246</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="196164000" />
+    <option name="totallyTimeSpent" value="196242000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1072" y="0" width="856" height="1038" extended-state="0" />

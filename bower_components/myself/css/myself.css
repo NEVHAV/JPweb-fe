@@ -10,6 +10,9 @@ li.hover:active {
 div.main-index {
     box-shadow: 5px 5px 5px #bdbdbd;
 }
+div.header {
+    box-shadow: 5px 5px 5px black;
+}
 body {
     background-color: #e0e0e0;
 }
@@ -92,4 +95,25 @@ h1.title_name {
 }
 div.right_center_div {
     margin-top: 15%;
+}
+.img {
+    border-radius: 50%;
+    width: 35px;
+    margin-top: 20px;
+}
+.size_admin {
+    width: 100%;
+    padding-top: 20px;
+    height: 630px;
+    margin: 10px 0 0 -18px;
+    box-shadow: 15px 10px 5px #bdbdbd;
+}
+th, td {
+    padding: 10px;
+    text-align: center;
+}
+
+th {
+    text-align: center;
+    white-space: nowrap;
 }

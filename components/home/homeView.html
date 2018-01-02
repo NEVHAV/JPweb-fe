@@ -9,6 +9,7 @@
             </div>
         </nav>
     </div>
+
     <div class="main-index log white">
         <div class="row">
             <div class="col s6">
@@ -31,19 +32,28 @@
                     </div>
                 </div>
             </div>
-            <div class="col s6">
-                <form class="row">
+
+            <!--giao dien dang nhap-->
+            <div class="col s6" ng-hide="sign()">
+                <form class="row" name="username">
                     <div class="center-align input-field col s6">
                         <i class="material-icons prefix">person</i>
-                        <input id="username" type="text" class="validate" ng-model="user.username" value="username">
+                        <input id="username" name="username" type="text" class="validate" ng-model="user.username" value="username" required>
                         <label for="username">Tên người dùng</label>
+                        <div role="alert">
+                            <a class="error red-text" ng-show="username.username.$touched && username.username.$invalid">Bạn chưa điền tên người dùng!</a>
+                        </div>
                     </div>
                 </form>
-                <form class="row">
+                <form class="row" name="password">
                     <div class="center-align input-field col s6">
                         <i class="material-icons prefix">lock</i>
-                        <input id="password" type="password" class="validate" ng-model="user.password" value="password">
+                        <input id="password" name="password" type="password" class="validate" ng-model="user.password" value="password" required>
                         <label for="password">Mật khẩu</label>
+                        <div role="alert">
+                            <!--<a class="error red-text" ng-show="password.password.$error.minlength">Mật khẩu phải lớn hơn 6 kí tự!</a>-->
+                            <a class="error red-text" ng-show="password.password.$touched && password.password.$invalid">Bạn chưa điền mật khẩu!</a>
+                        </div>
                     </div>
                 </form>
                 <a class="forget col s12 left-align blue-text" href="#">Quên mật khẩu?</a>
@@ -53,10 +63,70 @@
                     </div>
                     <div class="col s6"></div>
                 </div>
-                <a class="forget col s4 right-align black-text">Bạn chưa có tài khoản Japy?<a class="forget col s8 left-align blue-text" href="#">Đăng ký</a></a>
+                <a class="forget col s4 right-align black-text">Bạn chưa có tài khoản Japy?<a class="forget col s8 left-align blue-text" ng-click="goSignUp()" href="">Đăng ký</a></a>
+            </div>
+
+            <!--giao dien dang ky-->
+            <div class="col s6" ng-show="sign()">
+                <form name="newUsername">
+                    <div class="center-align input-field col s6">
+                        <i class="material-icons prefix">person</i>
+                        <input id="username2" name="username2" type="text" class="validate" ng-model="newUser.username" value="username" required>
+                        <label for="username2">Tên người dùng</label>
+                        <div role="alert">
+                            <a class="error red-text" ng-show="newUsername.username2.$touched && newUsername.username2.$invalid">Bạn chưa điền tên người dùng!</a>
+                        </div>
+                    </div>
+                </form>
+                <form name="newPassword">
+                    <div class="center-align input-field col s6">
+                        <i class="material-icons prefix">lock</i>
+                        <input id="password2" name="password2" type="password" class="validate" ng-model="newUser.password" value="password" ng-minlength="6" required>
+                        <label for="password2">Mật khẩu</label>
+                        <div role="alert">
+                            <a class="error red-text" ng-show="newPassword.password2.$error.minlength">Mật khẩu phải lớn hơn 6 ký tự!</a>
+                            <a class="error red-text" ng-show="newPassword.password2.$touched && newPassword.password2.$invalid">Bạn chưa điền mật khẩu!</a>
+                        </div>
+                    </div>
+                </form>
+                <form name="newEmail">
+                    <div class="center-align input-field col s6">
+                        <i class="material-icons prefix">email</i>
+                        <input id="email" name="email" type="email" class="validate" ng-model="newUser.email" value="email" required>
+                        <label for="email">Email</label>
+                        <div role="alert">
+                            <a class="error red-text" ng-show="newEmail.email.$touched && newEmail.email.$invalid">Bạn chưa điền email!</a>
+                        </div>
+                    </div>
+                </form>
+                <form name="newRepassword">
+                    <div class="center-align input-field col s6">
+                        <i class="material-icons prefix">lock</i>
+                        <input id="repassword" name="repassword" type="password" class="validate" ng-model="newUser.repassword" value="repassword" required>
+                        <label for="repassword">Nhập lại mật khẩu</label>
+                        <div role="alert">
+                            <a class="error red-text" ng-show="newRepassword.repassword.$touched && newRepassword.repassword.$invalid">Bạn chưa xác nhận mật khẩu!</a>
+                        </div>
+                    </div>
+                </form>
+                <div class="row">
+                    <div class="col s3"></div>
+                    <div class="col s6">
+                        <a class="center-align btn btn-block btn-social btn-facebook signin" ng-click="signUp()">Đăng ký</a>
+                    </div>
+                    <div class="col s3"></div>
+                </div>
+                <div class="row">
+                    <div class="col s3"></div>
+                    <div class="col s6">
+                        <a class="center-align btn btn-block btn-social btn-facebook signin white black-text" ng-click="goSignIn()"><i class="material-icons" style="float: left">arrow_back</i>Trở lại Đăng nhập</a>
+                    </div>
+                    <div class="col s3"></div>
+                </div>
             </div>
         </div>
     </div>
+
     <div class="subheader">
         <div class="carousel">
             <a class="carousel-item" href="#"><img src="https://images-na.ssl-images-amazon.com/images/I/91L3rUBEBqL.jpg"></a>

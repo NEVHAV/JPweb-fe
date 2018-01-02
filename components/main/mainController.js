@@ -2,14 +2,50 @@
  * Created by NEVHAV on 12/11/17.
  */
 angular.module('JPweb-fe')
-    .controller('mainController', function ($scope, $http, API_URL, API_URL_VOCALB, API_URL_GRAMMAR, Cache, $state) {
+    .controller('mainController', function ($scope, $http, API_URL, API_URL_VOCALB, API_URL_GRAMMAR, $cookieStore, $state) {
 
-        console.log('iden', Cache.get('iden'));
         API_URL = API_URL_VOCALB;
         $scope.title = 'JPweb';
         $scope.title2 = 'Từ vựng';
         $scope.lessonTitle = 'Bài 1';
 
+        //identify user
+        var userID = $cookieStore.get('iden');
+        if (userID >= 1) {
+            $scope.idenUser = function () {
+                return true;
+            };
+            $http.get(API_URL + "user/" + userID).then(function (response) {
+                $scope.user = response.data.data[0];
+                console.log($scope.user);
+            }, function (error) {});
+            $scope.dropdown = function () {
+                $(document).ready(function () {
+                    $('.dropdown-button').dropdown({
+                            inDuration: 300,
+                            outDuration: 225,
+                            constrainWidth: false,
+                            hover: false,
+                            gutter: 0,
+                            belowOrigin: true,
+                            alignment: 'left',
+                            stopPropagation: false
+                        }
+                    );
+                });
+            };
+            $scope.logOut = function () {
+                $cookieStore.remove('iden');
+                $state.go('home');
+            }
+        }
+        else {
+            $scope.idenUser = function () {
+                return false;
+            };
+        }
+
+        //giao dien
         $scope.change = function (id) {
             $scope.title2 = id;
         };
@@ -170,9 +206,9 @@ angular.module('JPweb-fe')
         };
 
         //sign in
-        $scope.signIn = function () {
+        $scope.signInModal = function () {
             $(document).ready(function () {
-                $('#signIn').modal({
+                $('#signInModal').modal({
                     dismissible: true,
                     opacity: .5,
                     inDuration: 300,
@@ -182,5 +218,30 @@ angular.module('JPweb-fe')
                     complete: function() {}
                 }).modal('open');
             });
+        };
+
+        $scope.signIn = function () {
+            console.log('go');
+            var url = "http://localhost:8080/JPweb-be/logIn";
+            $http({
+                method: 'POST',
+                url: url,
+                data: $scope.user
+            }).then(function (response) {
+                console.log(response);
+                console.log('success');
+                $scope.iden = response.data.data;
+                if ($scope.iden === 0) {
+                    $state.go('admin');
+                }
+                else {
+                    $cookieStore.put('iden', $scope.iden);
+                    location.reload();
+                }
+            }, function (error) {
+                console.log(error);
+                console.log('error: method post');
+                Materialize.toast('Tên người dùng hoặc mật khẩu không đúng!', 4000);
+            })
         };
     });

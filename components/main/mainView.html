@@ -9,12 +9,30 @@
                     <i class="material-icons prefix white-text">search</i>
                     <input type="text" class="validate green lighten-1" placeholder="Tìm kiếm">
                 </div>
-                <div class="col s2 right-align">
-                    <a class="waves-effect waves-teal btn-flat white-text green darken-1 modal-trigger" ng-click="signIn()">Sign in</a>
+                <div class="col s2 center-align" ng-hide="idenUser()">
+                    <a class="waves-effect waves-teal btn-flat white-text green darken-1 modal-trigger" ng-click="signInModal()">Đăng nhập</a>
+                </div>
+                <div class="col s2 center-align" ng-show="idenUser()">
+                    <div style="float: left; margin-left: 5px">
+                        <img src="components/main/hishiro.jpg" class="img">
+                    </div>
+                    <a class="dropdown-button btn horizontal transparent white-text center-align" style="text-transform: uppercase" ng-click="dropdown()" data-activates="dropdown">
+                    {{ user.username }}
+                    <i class="material-icons prefix white-text" style="float: right; margin-top: -15px">arrow_drop_down</i>
+                    </a>
+                    <ul id='dropdown' class="dropdown-content">
+                        <li><a>Trang cá nhân</a></li>
+                        <li><a>Sách của tôi</a></li>
+                        <li><a>Từ đã học</a></li>
+                        <li><a ng-click="logOut()">Đăng xuất</a></li>
+                    </ul>
+
                 </div>
             </div>
         </nav>
     </div>
+
+    <!--subheader-->
     <div class="main-index">
         <div class="subheader content green row">
             <div class="col s3">
@@ -37,6 +55,8 @@
             </div>
         </div>
     </div>
+
+    <!--body-->
     <div class="row">
         <div class="col s2">
             <div class="card blue-grey white">
@@ -77,8 +97,8 @@
         <div class="col s7">
             <div class="card large blue-grey white">
                 <div class="card-content" style="overflow: auto" ng-repeat="vocalb in vocalbs">
-                    <a ng-click="favorite()" ng-hide="love()" href="#" class="secondary-content"><i class="material-icons red-text">favorite</i></a>
-                    <a ng-click="favorite()" ng-show="love()" href="#" class="secondary-content"><i class="material-icons red-text">favorite_border</i></a>
+                    <a ng-click="favorite()" ng-hide="love()" class="secondary-content"><i class="material-icons red-text">favorite</i></a>
+                    <a ng-click="favorite()" ng-show="love()" class="secondary-content"><i class="material-icons red-text">favorite_border</i></a>
                     <p class="light-blue-text meanTitle">{{ vocalb.Nhat }}</p>
                     <p class="grey-text meanContent">{{ vocalb.Kanji }}</p>
                     <p class="light-blue-text meanContent">{{ vocalb.Nghia }}</p>
@@ -234,7 +254,7 @@
     </div>
 
     <!--signIn-->
-    <div class="modal signInModal" id="signIn">
+    <div class="modal signInModal" id="signInModal">
 
         <div class="modal-content">
             <h5 class="center-align grey-text">Đăng nhập</h5>
@@ -254,7 +274,7 @@
                     <div class="col s1"> </div>
                     <div class="input-field col s10">
                         <i class="material-icons prefix">person</i>
-                        <input id="username" type="text" class="validate">
+                        <input id="username" type="text" class="validate" ng-model="user.username" value="username">
                         <label for="username">Tên người dùng</label>
                     </div>
                     <div class="col s1"></div>
@@ -263,7 +283,7 @@
                     <div class="col s1"> </div>
                     <div class="input-field col s10">
                         <i class="material-icons prefix">lock</i>
-                        <input id="password" type="password" class="validate">
+                        <input id="password" type="password" class="validate" ng-model="user.password" value="password">
                         <label for="password">Mật khẩu</label>
                         <a class="forget col s12 left-align blue-text" href="#">Quên mật khẩu?</a>
                     </div>
@@ -281,6 +301,3 @@
         </div>
     </div>
 </main>
-
-
-

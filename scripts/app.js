@@ -3,17 +3,18 @@
  */
 angular.module('JPweb-fe', [
     'oc.lazyLoad',
-    'ui.router'
+    'ui.router',
+    'ngCookies'
 ])
     .constant('API_URL_VOCALB', 'http://localhost:8080/JPweb-be/')
     .constant('API_URL_GRAMMAR', 'http://localhost:8080/JPweb-be/')
     .constant('API_URL', '')
     // .constant('API_URL', 'http://localhost:8080/contacts/public/contacts/')
-    .factory('Cache', function ($cacheFactory) {
-        return $cacheFactory('Cache', {
-            capacity: 1
-        });
-    })
+    // .factory('Cache', function ($cacheFactory) {
+    //     return $cacheFactory('Cache', {
+    //         capacity: 1
+    //     });
+    // })
     .config(['$urlRouterProvider', '$stateProvider', function ($urlRouterProvider, $stateProvider) {
         $urlRouterProvider.otherwise('/home');
         $stateProvider
@@ -41,6 +42,21 @@ angular.module('JPweb-fe', [
                         return $ocLazyLoad.load(
                             {
                                 files: ['components/home/homeController.js']
+                            }
+                        )
+                    }
+                }
+            })
+
+            .state('admin', {
+                url: '/admin',
+                templateUrl: 'components/admin/adminView.html',
+                controller: 'adminController',
+                resolve: {
+                    loadMyFiles: function ($ocLazyLoad) {
+                        return $ocLazyLoad.load(
+                            {
+                                files: ['components/admin/adminController.js']
                             }
                         )
                     }

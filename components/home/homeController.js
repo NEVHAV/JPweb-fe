@@ -28,7 +28,7 @@ angular.module('JPweb-fe')
         };
         $scope.signIn = function () {
             console.log('sign in');
-            var url = "http://localhost:8080/JPweb-be/logIn";
+            let url = "http://localhost:8080/JPweb-be/logIn";
             $http({
                 method: 'POST',
                 url: url,
@@ -56,7 +56,7 @@ angular.module('JPweb-fe')
         $scope.signUp = function () {
             console.log('sign up');
             if ($scope.newUser.password === $scope.newUser.repassword) {
-                var url = "http://localhost:8080/JPweb-be/register";
+                let url = "http://localhost:8080/JPweb-be/register";
                 $http ({
                     method: 'POST',
                     url: url,

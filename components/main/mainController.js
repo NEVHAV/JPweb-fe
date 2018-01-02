@@ -10,7 +10,7 @@ angular.module('JPweb-fe')
         $scope.lessonTitle = 'Bài 1';
 
         //identify user
-        var userID = $cookieStore.get('iden');
+        let userID = $cookieStore.get('iden');
         if (userID >= 1) {
             $scope.idenUser = function () {
                 return true;
@@ -54,7 +54,7 @@ angular.module('JPweb-fe')
             $scope.allListVocalb = response.data.data;
             }, function (error) {});
 
-        //vocalb
+        //vocab
         $http.get(API_URL + "numberLesson").then(function (response) {
            $scope.numberLessons = response.data.data;
         }, function (error) {
@@ -119,21 +119,17 @@ angular.module('JPweb-fe')
             $http.get(API_URL + "minitest/" + $scope.number + "/" + $scope.type_test + "/" + $scope.time_default).then(function (response) {
                $scope.listVocalbTests = response.data.data;
                $scope.randomNumbers = response.data.random;
-               // console.log($scope.randomNumbers);
+               console.log($scope.randomNumbers);
                $scope.answer = function () {
                     return false;
                };
-               $scope.score = 0;
             }, function (error) {
                 console.log('listVocalbTests error!');
             });
         };
-        $scope.i = 'no';
         $scope.done = function () {
-            if ($scope.i === 'no') {
-                $scope.answer = function () {
-                    return true;
-                };
+            $scope.answer = function () {
+                return true;
             }
         };
         // $scope.rd = Math.floor((Math.random() * (4 - 1)) + 1);
@@ -150,10 +146,13 @@ angular.module('JPweb-fe')
                 }).modal('open');
             });
         };
+        //thong bao ket qua
+        $scope.score = 0;
         $scope.check = function (key, ans) {
             console.log(key + "," + ans);
-            if (key === ans)
-                  $scope.score = $scope.score + 1;
+            if (key === ans) {
+                $scope.score = $scope.score + 1;
+            }
         };
 
         //Buybook
@@ -222,7 +221,7 @@ angular.module('JPweb-fe')
 
         $scope.signIn = function () {
             console.log('go');
-            var url = "http://localhost:8080/JPweb-be/logIn";
+            let url = "http://localhost:8080/JPweb-be/logIn";
             $http({
                 method: 'POST',
                 url: url,
@@ -244,4 +243,9 @@ angular.module('JPweb-fe')
                 Materialize.toast('Tên người dùng hoặc mật khẩu không đúng!', 4000);
             })
         };
+
+        //menu nguoi dung
+        $scope.goProfile = function () {
+            $state.go('profile');
+        }
     });

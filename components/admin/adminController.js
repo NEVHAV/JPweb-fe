@@ -7,6 +7,11 @@ angular.module('JPweb-fe')
         $scope.title = 'JPweb - Admin';
         $(".button-collapse").sideNav();
 
+        $scope.out = function () {
+            $state.go('home');
+        };
+
+        //hien thi danh sach nguoi dung
         $scope.showUser = function () {
             $scope.user = function () {
                 return true;
@@ -54,6 +59,7 @@ angular.module('JPweb-fe')
             }
         };
 
+        //hien thi danh sach tai lieu
         $scope.showBook = function () {
             $scope.book = function () {
                 return true;
@@ -85,6 +91,7 @@ angular.module('JPweb-fe')
             };
         };
 
+        //them tai lieu
         $scope.showNewBook = function () {
             $scope.newBook = function () {
                 return true;
@@ -95,18 +102,39 @@ angular.module('JPweb-fe')
             $scope.user = function () {
                 return false;
             };
-            $scope.newID = 1;
-            $scope.arrayID = [{
-                value: 1
-            }];
-            $scope.addNew = function () {
-                $scope.newID += 1;
-                $scope.arrayID.push({value: $scope.newID});
-                console.log($scope.arrayID);
-            };
-            $scope.deleteNew = function (index) {
-                $scope.arrayID.splice(index, 1);
-                console.log('1', index);
+            $scope.choose = function (id) {
+                if (id === 0) {
+                    $scope.newVocab = function () {
+                        return true;
+                    };
+                    $scope.newID = 1;
+                    $scope.arrayID = [{
+                        value: 1
+                    }];
+                    $scope.addNew = function () {
+                        $scope.newID += 1;
+                        $scope.arrayID.push({value: $scope.newID});
+                    };
+                    $scope.deleteNew = function (index) {
+                        $scope.arrayID.splice(index, 1);
+                    };
+                }
+                if (id === 1) {
+                    $scope.newVocab = function () {
+                        return false;
+                    };
+                    $scope.newGramID = 1;
+                    $scope.arrayGramID = [{
+                        value: 1
+                    }];
+                    $scope.addGramNew = function () {
+                        $scope.newGramID += 1;
+                        $scope.arrayGramID.push({value: $scope.newGramID});
+                    };
+                    $scope.deleteGramNew = function (index) {
+                        $scope.arrayGramID.splice(index, 1);
+                    };
+                }
             };
         }
     });

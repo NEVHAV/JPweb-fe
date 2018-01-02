@@ -62,4 +62,19 @@ angular.module('JPweb-fe', [
                     }
                 }
             })
+
+            .state('profile', {
+                url: '/profile',
+                templateUrl: 'components/profile/profileView.html',
+                controller: 'profileController',
+                resolve: {
+                    loadMyFiles: function ($ocLazyLoad) {
+                        return $ocLazyLoad.load(
+                            {
+                                files: ['components/profile/profileController.js']
+                            }
+                        )
+                    }
+                }
+            })
     }]);

@@ -21,7 +21,7 @@
                     <i class="material-icons prefix white-text" style="float: right; margin-top: -15px">arrow_drop_down</i>
                     </a>
                     <ul id='dropdown' class="dropdown-content">
-                        <li><a>Trang cá nhân</a></li>
+                        <li><a ng-click="goProfile()">Trang cá nhân</a></li>
                         <li><a>Sách của tôi</a></li>
                         <li><a>Từ đã học</a></li>
                         <li><a ng-click="logOut()">Đăng xuất</a></li>
@@ -180,8 +180,9 @@
                                     <form class="col s10">
                                         <p class="testTitle blue-text">{{$index +1}}.{{ listVocalbTest[randomNumbers[$index]].Nhat }}</p>
                                         <p ng-repeat="list in listVocalbTest">
-                                            <input class="with-gap" name="{{ listVocalbTest }}" type="radio" id="{{ list.Nghia }}" ng-click="check(listVocalbTest[randomNumbers[$index]].STT, list.STT)"/>
-                                            <label for="{{ list.Nghia }}" class="black-text">{{ list.Nghia }}</label>
+                                            <input class="with-gap" name="{{ listVocalbTest }}" type="radio" id="{{ list.STT }}{{ $index }}" ng-click="check(listVocalbTest[randomNumbers[$parent.$index]].Nghia, list.Nghia)"/>
+                                            <label for="{{ list.STT }}{{ $index }}" class="black-text">{{ list.Nghia
+                                                }}</label>
                                         </p>
                                         <p class="red-text" ng-show="answer()">Đáp án: {{ listVocalbTest[randomNumbers[$index]].Nghia }}</p>
                                     </form>
@@ -202,12 +203,16 @@
                 Nộp bài
                 <i class="material-icons right">send</i>
             </button>
-            <p class="blue-text" ng-show="answer()">
+            <h1 class="green-text center-align" style="text-shadow: 0 5px 5px #bdbdbd;" ng-show="answer()">
                 Điểm: {{ score }}/{{ number }}
-            </p>
+            </h1>
             <button class="modal-close btn-danger btn red" ng-show="answer()">
                 <i class="material-icons right">cancel</i>
                 Thoát
+            </button>
+            <button class="btn-facebook btn blue" ng-show="answer()">
+                <i class="material-icons right">share</i>
+                Chia sẻ kết quả
             </button>
         </div>
     </div>
